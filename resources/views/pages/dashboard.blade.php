@@ -23,7 +23,7 @@
                     {{-- filter transaksi --}}
                     <div class="card">
                         <div class="card-header">
-                            <h5 class="card-title">Filter</h5>
+                            <h5 class="card-title">Periode</h5>
                         </div>
                         <div class="card-body">
                             <form action="{{ route('dashboard.index') }}" method="get">
@@ -36,7 +36,7 @@
                                         <input type="date" class="form-control" value="{{ $endDate }}"
                                             name="endDate">
                                     </div>
-                                    <div class="col-12 col-md-4">
+                                    <div class="col-12 col-md-2">
                                         <x-button color="primary" type="submit" title="Filter data"
                                             id="filter">Filter</x-button>
                                     </div>
@@ -126,7 +126,7 @@
 @endpush
 
 @push('custom_js')
-    <script src="{{ asset('app-assets/js/scripts/pages/dashboard-analytics.js') }}"></script>
+    {{-- <script src="{{ asset('app-assets/js/scripts/pages/dashboard-analytics.js') }}"></script> --}}
 
     <script>
         $(document).ready(function() {

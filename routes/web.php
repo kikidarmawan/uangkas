@@ -20,6 +20,8 @@ Route::get('/', function () {
 
 Route::get('/login', [App\Http\Controllers\AuthController::class, 'loginForm'])->name('login');
 Route::post('/login', [App\Http\Controllers\AuthController::class, 'loginAction'])->name('login.action');
+Route::get('/register', [App\Http\Controllers\AuthController::class, 'registerForm'])->name('register');
+Route::post('/register', [App\Http\Controllers\AuthController::class, 'registerAction'])->name('register.action');
 
 Route::group([
     'middleware' => 'auth',

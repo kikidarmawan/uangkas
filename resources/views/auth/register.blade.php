@@ -106,17 +106,28 @@
                                     <h2 class="brand-text text-primary ms-1">{{ env('APP_NAME') }}</h2>
                                 </a>
 
-                                <h4 class="card-title mb-1">Selamat datang! 👋</h4>
-                                <p class="card-text mb-2">Harap login terlebih dahulu</p>
+                                <h4 class="card-title mb-1">Daftar Akun</h4>
+                                <p class="card-text mb-2">Harap isi formulir terlebih dahulu</p>
 
-                                <form class="auth-login-form mt-2" action="{{ route('login.action') }}" method="POST">
+                                <form class="auth-login-form mt-2" action="{{ route('register.action') }}"
+                                    method="POST">
                                     @csrf
+                                    <div class="mb-1">
+                                        <label for="name" class="form-label">NAMA LENGKAP</label>
+                                        <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                            id="name" name="name" placeholder="Contoh: Kiki Darmawan"
+                                            aria-describedby="name" tabindex="1" autofocus
+                                            value="{{ old('name') }}" />
+                                        @error('name')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+
+                                    </div>
                                     <div class="mb-1">
                                         <label for="email" class="form-label">EMAIL</label>
                                         <input type="text" class="form-control @error('email') is-invalid @enderror"
                                             id="email" name="email" placeholder="john@example.com"
-                                            aria-describedby="email" tabindex="1" autofocus
-                                            value="{{ old('email') }}" />
+                                            aria-describedby="email" tabindex="2" value="{{ old('email') }}" />
                                         @error('email')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
@@ -126,14 +137,11 @@
                                     <div class="mb-1">
                                         <div class="d-flex justify-content-between">
                                             <label class="form-label" for="password">PASSWORD</label>
-                                            {{-- <a href="auth-forgot-password-basic.html">
-                                                <small>Forgot Password?</small>
-                                            </a> --}}
                                         </div>
                                         <div class="input-group input-group-merge form-password-toggle">
                                             <input type="password"
                                                 class="form-control form-control-merge l @error('password') is-invalid @enderror"
-                                                id="password" name="password" tabindex="2"
+                                                id="password" name="password" tabindex="3"
                                                 placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                                                 aria-describedby="password" />
                                             <span class="input-group-text cursor-pointer"><i
@@ -144,22 +152,41 @@
                                         </div>
                                     </div>
                                     <div class="mb-1">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="remember-me"
-                                                tabindex="3" />
-                                            <label class="form-check-label" for="remember-me"> Ingatkan saya </label>
+                                        <div class="d-flex justify-content-between">
+                                            <label class="form-label" for="password">KONFIRMASI PASSWORD</label>
+                                        </div>
+                                        <div class="input-group input-group-merge form-password-toggle">
+                                            <input type="password"
+                                                class="form-control form-control-merge l @error('password_confirmation') is-invalid @enderror"
+                                                id="password_confirmation" name="password_confirmation"
+                                                tabindex="4"
+                                                placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                                                aria-describedby="password_confirmation" />
+                                            <span class="input-group-text cursor-pointer"><i
+                                                    data-feather="eye"></i></span>
+                                            @error('password_confirmation')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
-                                    <button class="btn btn-primary w-100" tabindex="4"
-                                        type="submit">Masuk</button>
+                                    <div class="mb-1">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="remember-me"
+                                                tabindex="5" />
+                                            <label class="form-check-label" for="remember-me"> Saya setuju dengan S&K
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary w-100" tabindex="6"
+                                        type="submit">Daftar</button>
                                 </form>
 
-                                <p class="text-center mt-2">
-                                    <span>Saya belum punya akun</span>
-                                    <a href="{{ route('register') }}">
-                                        <span>Daftar Sekarang</span>
+                                {{-- <p class="text-center mt-2">
+                                    <span>New on our platform?</span>
+                                    <a href="auth-register-basic.html">
+                                        <span>Create an account</span>
                                     </a>
-                                </p>
+                                </p> --}}
 
                                 {{-- <div class="divider my-2">
                                     <div class="divider-text">or</div>

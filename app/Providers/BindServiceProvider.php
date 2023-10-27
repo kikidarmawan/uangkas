@@ -33,5 +33,10 @@ class BindServiceProvider extends ServiceProvider
             'App\Repositories\DompetRiwayat\DompetRiwayatInterface',
             'App\Repositories\DompetRiwayat\DompetRiwayatRepository'
         );
+
+        $this->app->bind(
+            'App\Repositories\User\UserInterface',
+            'App\Repositories\User\UserRepository'
+        );
     }
 }
