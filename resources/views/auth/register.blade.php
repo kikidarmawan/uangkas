@@ -181,12 +181,12 @@
                                         type="submit">Daftar</button>
                                 </form>
 
-                                {{-- <p class="text-center mt-2">
-                                    <span>New on our platform?</span>
-                                    <a href="auth-register-basic.html">
-                                        <span>Create an account</span>
+                                <p class="text-center mt-2">
+                                    <span>Saya sudah punya akun</span>
+                                    <a href="{{ route('login') }}">
+                                        <span>{{ 'Masuk' }}</span>
                                     </a>
-                                </p> --}}
+                                </p>
 
                                 {{-- <div class="divider my-2">
                                     <div class="divider-text">or</div>
