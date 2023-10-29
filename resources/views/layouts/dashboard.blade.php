@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimal-ui">
-    <meta name="description" content="Sistem Informasi Pencatatan Uang Masuk dan Keluar.">
+    <meta name="description" content="{{ env('APP_DESCRIPTION') }}">
     <meta name="keywords" content="si uangkas, uang kas, sistem informasi, web app">
     <meta name="author" content="Kiki Darmawan">
     <title>@yield('title') - {{ env('APP_NAME') }}</title>
