@@ -7,7 +7,7 @@
 @endpush
 @section('content')
     <div class="content-header row">
-        <div class="content-header-left col-md-9 col-12 mb-2">
+        <div class="content-header-left col-sm-12 col-md-9 col-12 mb-2">
             <div class="row breadcrumbs-top">
                 <div class="col-12">
                     <h2 class="content-header-title float-start mb-0">Transaksi</h2>
@@ -34,7 +34,7 @@
 
             <!-- List DataTable -->
             <div class="row">
-                <div class="col-8">
+                <div class="col-12 col-sm-12 col-md-8 col-lg-8">
                     <div class="card">
                         <div class="card-header">
                             <h5 class="card-title">Tambah transaksi</h5>
@@ -79,13 +79,15 @@
                                                             class="form-check-input @error('jns_trx') is-invalid @enderror"
                                                             type="radio" name="jns_trx" id="debit" value="debit"
                                                             checked="">
-                                                        <label class="form-check-label" for="debit">Debit</label>
+                                                        <label class="form-check-label" for="debit">Debit
+                                                            (Pengeluaran)</label>
                                                     </div>
                                                     <div class="form-check form-check-inline">
                                                         <input
                                                             class="form-check-input @error('js_trx') is-invalid @enderror"
                                                             type="radio" name="jns_trx" id="kredit" value="kredit">
-                                                        <label class="form-check-label" for="kredit">Kredit</label>
+                                                        <label class="form-check-label" for="kredit">Kredit
+                                                            (Pemasukan)</label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -137,7 +139,7 @@
                         </form>
                     </div>
                 </div>
-                <div class="col-lg-4 col-sm-12 col-12">
+                <div class="col-12 col-sm-12 col-md-4 col-lg-4">
                     <div class="card text-center">
                         <div class="card-body">
                             <div class="avatar bg-light-success p-50 mb-1">

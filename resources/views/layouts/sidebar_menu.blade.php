@@ -22,12 +22,26 @@
                 <x-sidebar-link icon="grid" title="Dashboard" :route="route('dashboard.index')">Dashboard</x-sidebar-link>
             </li>
 
-            <li class=" nav-item {{ request()->routeIs('dashboard.transaksi*') ? 'active' : '' }}">
+
+
+            <li class=" nav-item {{ request()->routeIs('dashboard.transaksi*') ? 'active' : '' }} ">
                 <x-sidebar-link icon="shopping-cart" title="Dashboard" :route="route('dashboard.transaksi.index')">Transaksi</x-sidebar-link>
             </li>
+            <li class=" nav-item {{ request()->routeIs('dashboard.report.transaksi*') ? 'open' : '' }}">
+                <a class="d-flex align-items-center" href="#"><i data-feather="book"></i><span
+                        class="menu-title text-truncate" data-i18n="Dashboards">Laporan Transaksi</span>
+                </a>
+                <ul class="menu-content">
+                    <li class="{{ request()->routeIs('dashboard.report.transaksi.harian') ? 'active' : '' }}">
+                        <x-sidebar-link icon="circle" title="Laporan Transaksi Harian"
+                            :route="route('dashboard.report.transaksi.harian')">Harian</x-sidebar-link>
 
-            <li class=" nav-item ">
-                <x-sidebar-link icon="book" title="Dashboard" :route="route('dashboard.transaksi.index')">Laporan</x-sidebar-link>
+                    </li>
+                    <li class="{{ request()->routeIs('dashboard.report.transaksi.bulanan') ? 'active' : '' }}">
+                        <x-sidebar-link icon="circle" title="Laporan Transaksi Bulanan"
+                            :route="route('dashboard.report.transaksi.bulanan')">Bulanan</x-sidebar-link>
+                    </li>
+                </ul>
             </li>
 
 

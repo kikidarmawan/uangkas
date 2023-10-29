@@ -28,11 +28,11 @@
                         <div class="card-body">
                             <form action="{{ route('dashboard.index') }}" method="get">
                                 <div class="row">
-                                    <div class="col-12 col-md-4">
+                                    <div class="col-12 col-md-4 mb-1">
                                         <input type="date" class="form-control" value="{{ $startDate }}"
                                             name="startDate">
                                     </div>
-                                    <div class="col-12 col-md-4">
+                                    <div class="col-12 col-md-4 mb-1">
                                         <input type="date" class="form-control" value="{{ $endDate }}"
                                             name="endDate">
                                     </div>
@@ -138,7 +138,7 @@
                 processing: true,
                 responsive: true,
                 ajax: {
-                    url: "{{ route('dashboard.index') }}",
+                    url: "{{ route('dashboard.index', ['startDate' => $startDate, 'endDate' => $endDate]) }}",
                     type: "GET",
                 },
 

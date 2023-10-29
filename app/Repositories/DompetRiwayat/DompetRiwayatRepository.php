@@ -44,7 +44,7 @@ class DompetRiwayatRepository implements DompetRiwayatInterface
     {
         return DompetRiwayat::where('dompet_id', $dompetId)
             ->whereBetween('tanggal', [$startDate, $endDate])
-            ->latest()
+            ->orderBy('tanggal', 'desc')
             ->get()->toArray();
     }
 }

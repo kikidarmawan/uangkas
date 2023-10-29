@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,4 +33,10 @@ Route::group([
 
     // transaksi
     Route::resource('transaksi', App\Http\Controllers\TransaksiController::class)->except(['show', 'update', 'destroy']);
+
+    // Report
+    Route::group(['prefix' => 'report/transaksi'], function () {
+        Route::get('/harian', [App\Http\Controllers\ReportController::class, 'dailyReport'])->name('report.transaksi.harian');
+        Route::get('/bulanan', [App\Http\Controllers\ReportController::class, 'monthlyReport'])->name('report.transaksi.bulanan');
+    });
 });
