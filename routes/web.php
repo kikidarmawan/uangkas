@@ -38,5 +38,6 @@ Route::group([
     Route::group(['prefix' => 'report/transaksi'], function () {
         Route::get('/harian', [App\Http\Controllers\ReportController::class, 'dailyReport'])->name('report.transaksi.harian');
         Route::get('/bulanan', [App\Http\Controllers\ReportController::class, 'monthlyReport'])->name('report.transaksi.bulanan');
+        Route::get('/tahunan', [App\Http\Controllers\ReportController::class, 'annualReport'])->name('report.transaksi.tahunan');
     });
 });

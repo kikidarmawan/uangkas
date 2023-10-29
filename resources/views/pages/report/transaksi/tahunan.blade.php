@@ -13,8 +13,8 @@
 
         table {
             /* table-layout: fixed;
-                                                                                                                                                                                                                            width: 100%;
-                                                                                                                                                                                                                            white-space: nowrap; */
+                                                                                                                                                                                                                                                        width: 100%;
+                                                                                                                                                                                                                                                        white-space: nowrap; */
         }
     </style>
 @endpush
@@ -29,7 +29,7 @@
                             <li class="breadcrumb-item">
                                 <x-link :route="route('dashboard.index')" :title="'Dashboard'">Dashboard</x-link>
                             </li>
-                            <li class="breadcrumb-item active">Laporan Transaksi Bulanan
+                            <li class="breadcrumb-item active">Laporan Transaksi Tahunan
                             </li>
                         </ol>
                     </div>
@@ -51,7 +51,7 @@
                             </h5>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('dashboard.report.transaksi.bulanan') }}" method="get">
+                            <form action="{{ route('dashboard.report.transaksi.tahunan') }}" method="get">
                                 <div class="row">
                                     <div class="col-sm-12 col-md-4">
                                         <div class="mb-1">
@@ -82,7 +82,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h5 class="card-title">Laporan transaksi bulanan</h5>
+                            <h5 class="card-title">Laporan transaksi tahunan</h5>
                         </div>
                         <div class="card-body">
                             <p class="card-text">
@@ -95,7 +95,7 @@
                                 <table class="table table-striped" id="tableTrx">
                                     <thead>
                                         <tr>
-                                            <th>Bulan</th>
+                                            <th>Tahun</th>
                                             <th>Kredit (Pemasukan)</th>
                                             <th>Debit (Pengeluaran)</th>
                                         </tr>
@@ -103,7 +103,7 @@
                                     <tbody>
                                         @foreach ($data as $item)
                                             <tr>
-                                                <td>{{ $item['bulan'] }}, {{ $item['tahun'] }}</td>
+                                                <td>{{ $item['tahun'] }}</td>
                                                 <td>
                                                     <span class="text-success">{{ Currency::rupiah($item['total_kredit']) }}
                                                     </span>

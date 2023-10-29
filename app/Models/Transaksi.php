@@ -57,6 +57,6 @@ class Transaksi extends Model
 
     public function getTanggalAttribute($value)
     {
-        return date('d-m-Y', strtotime($value));
+        return date('d/m/Y', strtotime($value));
     }
 }

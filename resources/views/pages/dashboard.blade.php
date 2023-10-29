@@ -94,10 +94,8 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Jenis</th>
                                             <th>Ref ID</th>
-                                            <th>Debit</th>
-                                            <th>Kredit</th>
+                                            <th>Nominal</th>
                                             <th>Saldo Akhir</th>
                                             <th>Keterangan</th>
                                             <th>Tanggal Trx</th>
@@ -149,11 +147,6 @@
                         searchable: false,
                     },
 
-                    {
-                        data: 'jns_trx',
-                        name: 'jns_trx',
-                        className: 'text-center'
-                    },
 
                     {
                         data: 'ref_id',
@@ -161,13 +154,8 @@
                         className: 'text-center'
                     },
                     {
-                        data: 'debit',
-                        name: 'debit',
-                        className: 'text-center'
-                    },
-                    {
-                        data: 'kredit',
-                        name: 'kredit',
+                        data: 'nominal',
+                        name: 'nominal',
                         className: 'text-center'
                     },
                     {

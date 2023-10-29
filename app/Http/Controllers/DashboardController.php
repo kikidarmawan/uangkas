@@ -30,19 +30,20 @@ class DashboardController extends Controller
             $query = $this->dompetRiwayatRepository->getDompetRiwayatByDompetIdAndFilterByDate($dompetId, $startDate, $endDate);
             return DataTables::of($query)
                 ->addIndexColumn()
-                ->editColumn('debit', function ($row) {
-                    return Currency::rupiah($row['debit']);
-                })
-                ->editColumn('kredit', function ($row) {
-                    return Currency::rupiah($row['kredit']);
+                ->addColumn('nominal', function ($row) {
+                    if ($row['jns_trx'] == 'debit') {
+                        return "<span class='text-danger'>-" . Currency::rupiah($row['debit']) . "</span>";
+                    } else {
+                        return "<span class='text-success'>+" . Currency::rupiah($row['kredit']) . "</span>";
+                    }
                 })
                 ->editColumn('saldo', function ($row) {
-                    return Currency::rupiah($row['saldo']);
+                    return  '<span class="text-primary">' . Currency::rupiah($row['saldo']) . '</span>';
                 })
                 ->editColumn('jns_trx', function ($row) {
                     return $row['jns_trx'] == 'debit' ? '<span class="badge bg-light-danger">Debit</span>' : '<span class="badge bg-light-success">Kredit</span>';
                 })
-                ->rawColumns(['jns_trx'])
+                ->rawColumns(['jns_trx', 'saldo', 'nominal'])
                 ->toJson();
         }
         return view('pages.dashboard', [

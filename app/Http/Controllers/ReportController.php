@@ -42,4 +42,15 @@ class ReportController extends Controller
 
         return view('pages.report.transaksi.bulanan', compact('data', 'startDate', 'endDate'));
     }
+
+    public function annualReport(Request $request)
+    {
+        $user = Auth::user();
+        $dompetId = $user->dompet->id;
+        $startDate = isset($request->startDate) ? $request->startDate : date('Y-m-d', strtotime('-1 week'));
+        $endDate = isset($request->endDate) ? $request->endDate : date('Y-m-d');
+        $data = $this->transaksiRepository->annualReport($startDate, $endDate, $dompetId);
+
+        return view('pages.report.transaksi.tahunan', compact('data', 'startDate', 'endDate'));
+    }
 }

@@ -74,4 +74,18 @@ class TransaksiRepository implements TransaksiInterface
             ->get()
             ->toArray();
     }
+
+    public function annualReport(string $startDate, string $endDate, int $dompetId): array
+    {
+        return Transaksi::select(
+            DB::raw('YEAR(tanggal) as tahun'),
+            DB::raw('SUM(CASE WHEN jns_trx = "debit" THEN nominal ELSE 0 END) AS total_debit'),
+            DB::raw('SUM(CASE WHEN jns_trx = "kredit" THEN nominal ELSE 0 END) AS total_kredit'),
+        )->whereBetween('tanggal', [$startDate, $endDate])
+            ->where('dompet_id', $dompetId)
+            ->groupBy('tahun')
+            ->orderBy('tahun')
+            ->get()
+            ->toArray();
+    }
 }

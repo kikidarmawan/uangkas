@@ -41,6 +41,10 @@
                         <x-sidebar-link icon="circle" title="Laporan Transaksi Bulanan"
                             :route="route('dashboard.report.transaksi.bulanan')">Bulanan</x-sidebar-link>
                     </li>
+                    <li class="{{ request()->routeIs('dashboard.report.transaksi.tahunan') ? 'active' : '' }}">
+                        <x-sidebar-link icon="circle" title="Laporan Transaksi Tahunan"
+                            :route="route('dashboard.report.transaksi.tahunan')">Tahunan</x-sidebar-link>
+                    </li>
                 </ul>
             </li>
 

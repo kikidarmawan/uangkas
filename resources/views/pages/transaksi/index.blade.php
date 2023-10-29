@@ -13,8 +13,8 @@
 
         table {
             /* table-layout: fixed;
-                width: 100%;
-                white-space: nowrap; */
+                                    width: 100%;
+                                    white-space: nowrap; */
         }
     </style>
 @endpush
@@ -63,10 +63,11 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Jenis</th>
+                                            {{-- <th>Jenis</th> --}}
                                             <th>Ref ID</th>
-                                            <th>Debit</th>
-                                            <th>Kredit</th>
+                                            {{-- <th>Debit</th>
+                                            <th>Kredit</th> --}}
+                                            <th>Nominal</th>
                                             <th>Saldo Akhir</th>
                                             <th>Keterangan</th>
                                             <th>Tanggal Trx</th>
@@ -116,11 +117,11 @@
                         searchable: false,
                     },
 
-                    {
-                        data: 'jns_trx',
-                        name: 'jns_trx',
-                        className: 'text-center'
-                    },
+                    // {
+                    //     data: 'jns_trx',
+                    //     name: 'jns_trx',
+                    //     className: 'text-center'
+                    // },
 
                     {
                         data: 'ref_id',
@@ -128,15 +129,20 @@
                         className: 'text-center'
                     },
                     {
-                        data: 'debit',
-                        name: 'debit',
+                        data: 'nominal',
+                        name: 'nominal',
                         className: 'text-center'
                     },
-                    {
-                        data: 'kredit',
-                        name: 'kredit',
-                        className: 'text-center'
-                    },
+                    // {
+                    //     data: 'debit',
+                    //     name: 'debit',
+                    //     className: 'text-center'
+                    // },
+                    // {
+                    //     data: 'kredit',
+                    //     name: 'kredit',
+                    //     className: 'text-center'
+                    // },
                     {
                         data: 'saldo',
                         name: 'saldo',
