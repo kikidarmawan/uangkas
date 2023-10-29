@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-@section('title', 'Transaksi')
+@section('title', 'Dompet')
 @push('vendor_css')
     <link rel="stylesheet" type="text/css"
         href="{{ asset('app-assets/vendors/css/tables/datatable/dataTables.bootstrap5.min.css') }}">
@@ -13,8 +13,8 @@
 
         table {
             /* table-layout: fixed;
-                                                                                                                                                                                                    width: 100%;
-                                                                                                                                                                                                    white-space: nowrap; */
+                                                                                                                                                                                                        width: 100%;
+                                                                                                                                                                                                        white-space: nowrap; */
         }
     </style>
 @endpush
@@ -23,13 +23,13 @@
         <div class="content-header-left col-md-9 col-12 mb-2">
             <div class="row breadcrumbs-top">
                 <div class="col-12">
-                    <h2 class="content-header-title float-start mb-0">Transaksi</h2>
+                    <h2 class="content-header-title float-start mb-0">Dompet</h2>
                     <div class="breadcrumb-wrapper">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
                                 <x-link :route="route('dashboard.index')" :title="'Dashboard'">Dashboard</x-link>
                             </li>
-                            <li class="breadcrumb-item active">Transaksi
+                            <li class="breadcrumb-item active">Dompet
                             </li>
                         </ol>
                     </div>

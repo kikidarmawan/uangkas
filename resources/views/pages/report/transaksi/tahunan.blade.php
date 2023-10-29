@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-@section('title', 'Transaksi')
+@section('title', 'Laporan Transaksi Tahunan')
 @push('vendor_css')
     <link rel="stylesheet" type="text/css"
         href="{{ asset('app-assets/vendors/css/tables/datatable/dataTables.bootstrap5.min.css') }}">
@@ -13,8 +13,8 @@
 
         table {
             /* table-layout: fixed;
-                                                                                                                                                                                                                                                            width: 100%;
-                                                                                                                                                                                                                                                            white-space: nowrap; */
+                                                                                                                                                                                                                                                                width: 100%;
+                                                                                                                                                                                                                                                                white-space: nowrap; */
         }
     </style>
 @endpush
