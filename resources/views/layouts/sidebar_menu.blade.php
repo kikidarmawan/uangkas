@@ -23,7 +23,9 @@
             </li>
 
 
-
+            <li class=" nav-item {{ request()->routeIs('dashboard.dompet*') ? 'active' : '' }} ">
+                <x-sidebar-link icon="credit-card" title="dompet" :route="route('dashboard.dompet.index')">Dompet</x-sidebar-link>
+            </li>
             <li class=" nav-item {{ request()->routeIs('dashboard.transaksi*') ? 'active' : '' }} ">
                 <x-sidebar-link icon="shopping-cart" title="Dashboard" :route="route('dashboard.transaksi.index')">Transaksi</x-sidebar-link>
             </li>

@@ -27,23 +27,20 @@ class TransaksiController extends Controller
     {
         if ($request->ajax()) {
             $user = auth()->user();
-            $query = $this->dompetRiwayatRepository->getDompetRiwayatByDompetId($user->dompet->id);
+            $query = $this->transaksiRepository->getAllTransaksiByUserId($user->id);
             return DataTables::of($query)
                 ->addIndexColumn()
                 ->addColumn('nominal', function ($row) {
                     if ($row['jns_trx'] == 'debit') {
-                        return "<span class='text-danger'>-" . Currency::rupiah($row['debit']) . "</span>";
+                        return "<span class='text-danger'>-" . Currency::rupiah($row['nominal']) . "</span>";
                     } else {
-                        return "<span class='text-success'>+" . Currency::rupiah($row['kredit']) . "</span>";
+                        return "<span class='text-success'>+" . Currency::rupiah($row['nominal']) . "</span>";
                     }
-                })
-                ->editColumn('saldo', function ($row) {
-                    return  '<span class="text-primary">' . Currency::rupiah($row['saldo']) . '</span>';
                 })
                 ->editColumn('jns_trx', function ($row) {
                     return $row['jns_trx'] == 'debit' ? '<span class="badge bg-light-danger">Debit</span>' : '<span class="badge bg-light-success">Kredit</span>';
                 })
-                ->rawColumns(['jns_trx', 'nominal', 'saldo'])
+                ->rawColumns(['jns_trx', 'nominal'])
                 ->toJson();
         }
         return view('pages.transaksi.index');

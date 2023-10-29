@@ -12,23 +12,23 @@ class DompetRepository implements DompetInterface
         return Dompet::all()->toArray();
     }
 
-    public function getDompetById($id): object
+    public function getDompetById(int $id): object
     {
         return Dompet::findOrFail($id);
     }
 
-    public function createDompet($data): object
+    public function createDompet(array $data): object
     {
         return Dompet::create($data);
     }
 
-    public function updateDompet($data, $id): bool
+    public function updateDompet(array $data, int $id): bool
     {
         $dompet = Dompet::findOrFail($id);
         return $dompet->update($data);
     }
 
-    public function deleteDompet($id): bool
+    public function deleteDompet(int $id): bool
     {
         $dompet = Dompet::findOrFail($id);
         return $dompet->delete();

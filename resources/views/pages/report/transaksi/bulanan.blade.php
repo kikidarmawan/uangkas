@@ -13,8 +13,8 @@
 
         table {
             /* table-layout: fixed;
-                                                                                                                                                                                                                            width: 100%;
-                                                                                                                                                                                                                            white-space: nowrap; */
+                                                                                                                                                                                                                                    width: 100%;
+                                                                                                                                                                                                                                    white-space: nowrap; */
         }
     </style>
 @endpush
@@ -98,6 +98,7 @@
                                             <th>Bulan</th>
                                             <th>Kredit (Pemasukan)</th>
                                             <th>Debit (Pengeluaran)</th>
+                                            <th>Selisih</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -109,8 +110,21 @@
                                                     </span>
                                                 </td>
                                                 <td>
-                                                    <span
-                                                        class="text-danger">{{ Currency::rupiah($item['total_debit']) }}</span>
+                                                    <span class="text-danger">{{ Currency::rupiah($item['total_debit']) }}
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    @if ($item['selisih'] > 0)
+                                                        <span class="text-success">{{ Currency::rupiah($item['selisih']) }}
+                                                        </span>
+                                                    @elseif($item['selisih'] < 0)
+                                                        <span
+                                                            class="text-danger">{{ Currency::rupiah($item['selisih']) }}</span>
+                                                    @else
+                                                        <span
+                                                            class="text-secondary">{{ Currency::rupiah($item['selisih']) }}
+                                                        </span>
+                                                    @endif
                                                 </td>
                                             </tr>
                                         @endforeach

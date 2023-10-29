@@ -13,8 +13,8 @@
 
         table {
             /* table-layout: fixed;
-                                                                            width: 100%;
-                                                                            white-space: nowrap; */
+                                                                                                                    width: 100%;
+                                                                                                                    white-space: nowrap; */
         }
     </style>
 @endpush
@@ -43,13 +43,25 @@
 
             <!-- List DataTable -->
             <div class="row">
+                <div class="col-lg-6 col-sm-6 col-12">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <div class="avatar bg-light-primary p-50 mb-1">
+                                <div class="avatar-content">
+                                    <x-icon-feather icon="credit-card" class="font-medium-5" />
+                                </div>
+                            </div>
+                            <h2 class="fw-bolder">
+                                @currencyRupiah($dompet->saldo)
+                            </h2>
+                            <p class="card-text">Saldo Dompet</p>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            {{-- <h5 class="card-title">Daftar transaksi</h5> --}}
-                            <x-button-link icon="plus" :route="route('dashboard.transaksi.create')" type='primary' title="Buat Transaksi">
-                                Transaksi baru
-                            </x-button-link>
+                            <h5 class="card-title">Mutasi Dompet</h5>
                         </div>
                         <div class="card-body">
                             <p class="card-text">
@@ -61,8 +73,12 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
+                                            {{-- <th>Jenis</th> --}}
                                             <th>Ref ID</th>
+                                            {{-- <th>Debit</th>
+                                            <th>Kredit</th> --}}
                                             <th>Nominal</th>
+                                            <th>Saldo Akhir</th>
                                             <th>Keterangan</th>
                                             <th>Tanggal Trx</th>
                                             <th>Tanggal Input</th>
@@ -111,12 +127,6 @@
                         searchable: false,
                     },
 
-                    // {
-                    //     data: 'jns_trx',
-                    //     name: 'jns_trx',
-                    //     className: 'text-center'
-                    // },
-
                     {
                         data: 'ref_id',
                         name: 'ref_id',
@@ -127,21 +137,6 @@
                         name: 'nominal',
                         className: 'text-center'
                     },
-                    // {
-                    //     data: 'debit',
-                    //     name: 'debit',
-                    //     className: 'text-center'
-                    // },
-                    // {
-                    //     data: 'kredit',
-                    //     name: 'kredit',
-                    //     className: 'text-center'
-                    // },
-                    // {
-                    //     data: 'saldo',
-                    //     name: 'saldo',
-                    //     className: 'text-center'
-                    // },
                     {
                         data: 'keterangan',
                         name: 'keterangan',

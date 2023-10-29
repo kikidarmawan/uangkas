@@ -9,30 +9,32 @@ class TransaksiRepository implements TransaksiInterface
 {
     public function getAllTransaksi(): array
     {
-
-        return [
-            'data' => Transaksi::query()->latest()->get()
-        ];
+        return Transaksi::query()->orderBy('created_at', 'desc')->get()->toArray();
     }
 
-    public function getTransaksiById($id): object
+    public function getAllTransaksiByUserId(int $userId): array
+    {
+        return Transaksi::where('user_id', $userId)->orderBy('created_at', 'desc')->get()->toArray();
+    }
+
+    public function getTransaksiById(int $id): object
     {
         $data =  Transaksi::find($id)->first();
 
         return (object) $data;
     }
 
-    public function createTransaksi($data): object
+    public function createTransaksi(array $data): object
     {
         return (object) Transaksi::create($data);
     }
 
-    public function updateTransaksi($data, $id): bool
+    public function updateTransaksi(array $data, int $id): bool
     {
         return Transaksi::find($id)->update($data);
     }
 
-    public function deleteTransaksi($id): bool
+    public function deleteTransaksi(int $id): bool
     {
         return Transaksi::destroy($id);
     }
@@ -51,6 +53,7 @@ class TransaksiRepository implements TransaksiInterface
             'tanggal',
             DB::raw('SUM(CASE WHEN jns_trx = "debit" THEN nominal ELSE 0 END) AS total_debit'),
             DB::raw('SUM(CASE WHEN jns_trx = "kredit" THEN nominal ELSE 0 END) AS total_kredit'),
+            DB::raw('SUM(CASE WHEN jns_trx = "kredit" THEN nominal ELSE 0 END) - SUM(CASE WHEN jns_trx = "debit" THEN nominal ELSE 0 END) AS selisih')
         )->whereBetween('tanggal', [$startDate, $endDate])
             ->where('dompet_id', $dompetId)
             ->groupBy('tanggal')
@@ -66,6 +69,7 @@ class TransaksiRepository implements TransaksiInterface
             DB::raw('YEAR(tanggal) as tahun'),
             DB::raw('SUM(CASE WHEN jns_trx = "debit" THEN nominal ELSE 0 END) AS total_debit'),
             DB::raw('SUM(CASE WHEN jns_trx = "kredit" THEN nominal ELSE 0 END) AS total_kredit'),
+            DB::raw('SUM(CASE WHEN jns_trx = "kredit" THEN nominal ELSE 0 END) - SUM(CASE WHEN jns_trx = "debit" THEN nominal ELSE 0 END) AS selisih')
         )->whereBetween('tanggal', [$startDate, $endDate])
             ->where('dompet_id', $dompetId)
             ->groupBy('bulan')
@@ -81,6 +85,8 @@ class TransaksiRepository implements TransaksiInterface
             DB::raw('YEAR(tanggal) as tahun'),
             DB::raw('SUM(CASE WHEN jns_trx = "debit" THEN nominal ELSE 0 END) AS total_debit'),
             DB::raw('SUM(CASE WHEN jns_trx = "kredit" THEN nominal ELSE 0 END) AS total_kredit'),
+            // selisih
+            DB::raw('SUM(CASE WHEN jns_trx = "kredit" THEN nominal ELSE 0 END) - SUM(CASE WHEN jns_trx = "debit" THEN nominal ELSE 0 END) AS selisih')
         )->whereBetween('tanggal', [$startDate, $endDate])
             ->where('dompet_id', $dompetId)
             ->groupBy('tahun')

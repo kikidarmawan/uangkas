@@ -12,23 +12,23 @@ class DompetRiwayatRepository implements DompetRiwayatInterface
         return DompetRiwayat::all()->toArray();
     }
 
-    public function getDompetRiwayatById($id): object
+    public function getDompetRiwayatById(int $id): object
     {
         return DompetRiwayat::findOrFail($id);
     }
 
-    public function createDompetRiwayat($data): object
+    public function createDompetRiwayat(array $data): object
     {
         return DompetRiwayat::create($data);
     }
 
-    public function updateDompetRiwayat($data, $id): bool
+    public function updateDompetRiwayat(array $data, int $id): bool
     {
         $dompetRiwayat = DompetRiwayat::findOrFail($id);
         return $dompetRiwayat->update($data);
     }
 
-    public function deleteDompetRiwayat($id): bool
+    public function deleteDompetRiwayat(int $id): bool
     {
         $dompetRiwayat = DompetRiwayat::findOrFail($id);
         return $dompetRiwayat->delete();
@@ -44,7 +44,7 @@ class DompetRiwayatRepository implements DompetRiwayatInterface
     {
         return DompetRiwayat::where('dompet_id', $dompetId)
             ->whereBetween('tanggal', [$startDate, $endDate])
-            ->orderBy('tanggal', 'desc')
+            // ->orderBy('tanggal', 'desc')
             ->orderBy('created_at', 'desc')
             ->get()->toArray();
     }

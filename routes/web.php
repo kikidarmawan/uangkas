@@ -31,6 +31,8 @@ Route::group([
     Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('index');
     Route::get('/logout', [App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
 
+    // Dompet
+    Route::get('/dompet', [App\Http\Controllers\DompetController::class, 'index'])->name('dompet.index');
     // transaksi
     Route::resource('transaksi', App\Http\Controllers\TransaksiController::class)->except(['show', 'update', 'destroy']);
 

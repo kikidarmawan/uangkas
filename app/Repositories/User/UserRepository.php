@@ -12,23 +12,23 @@ class UserRepository implements UserInterface
         return User::all()->toArray();
     }
 
-    public function getUserById($id): object
+    public function getUserById(int $id): object
     {
         return User::findOrFail($id);
     }
 
-    public function createUser($data): object
+    public function createUser(array $data): object
     {
         return User::create($data);
     }
 
-    public function updateUser($data, $id): bool
+    public function updateUser(array $data, int $id): bool
     {
         $user = User::findOrFail($id);
         return $user->update($data);
     }
 
-    public function deleteUser($id): bool
+    public function deleteUser(int $id): bool
     {
         $user = User::findOrFail($id);
         return $user->delete();

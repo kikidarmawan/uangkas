@@ -6,10 +6,10 @@ namespace App\Repositories\DompetRiwayat;
 interface DompetRiwayatInterface
 {
     public function getAllDompetRiwayat(): array;
-    public function getDompetRiwayatById($id): object;
-    public function createDompetRiwayat($data): object;
-    public function updateDompetRiwayat($data, $id): bool;
-    public function deleteDompetRiwayat($id): bool;
+    public function getDompetRiwayatById(int $id): object;
+    public function createDompetRiwayat(array $data): object;
+    public function updateDompetRiwayat(array $data, int $id): bool;
+    public function deleteDompetRiwayat(int $id): bool;
 
     // customed function
     public function getDompetRiwayatByDompetId(int $dompetId): array;
