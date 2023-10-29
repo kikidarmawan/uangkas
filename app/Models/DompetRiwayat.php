@@ -41,17 +41,17 @@ class DompetRiwayat extends Model
     // custom format created_at
     public function getCreatedAtAttribute($value)
     {
-        return date('d/m/Y H:i', strtotime($value));
+        return date('d-m-Y H:i', strtotime($value));
     }
     public function getUpdatedAtAttribute($value)
     {
-        return date('d/m/Y H:i', strtotime($value));
+        return date('d-m-Y H:i', strtotime($value));
     }
 
     // custom format tanggal
 
     public function getTanggalAttribute($value)
     {
-        return date('d/m/Y', strtotime($value));
+        return date('d-m-Y', strtotime($value));
     }
 }

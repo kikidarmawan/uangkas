@@ -13,8 +13,8 @@
 
         table {
             /* table-layout: fixed;
-                                                                                                                            width: 100%;
-                                                                                                                            white-space: nowrap; */
+                                                                                                                                                                                    width: 100%;
+                                                                                                                                                                                    white-space: nowrap; */
         }
     </style>
 @endpush
@@ -43,7 +43,7 @@
 
             <!-- List DataTable -->
             <div class="row">
-                <div class="col-lg-6 col-sm-6 col-12">
+                <div class="col-lg-12 col-sm-12 col-12">
                     <div class="card text-center">
                         <div class="card-body">
                             <div class="avatar bg-light-primary p-50 mb-1">
@@ -54,7 +54,17 @@
                             <h2 class="fw-bolder">
                                 @currencyRupiah($dompet->saldo)
                             </h2>
-                            <p class="card-text">Saldo Dompet</p>
+                            <p class="card-text">Saldo Dompet saat ini</p>
+                            <div class="row border-top text-center mx-0">
+                                <div class="col-6 border-end py-1">
+                                    <p class="card-text text-muted mb-0">Total Pemasukan</p>
+                                    <h3 class="fw-bolder mb-0 text-success">@currencyRupiah($totalKredit)</h3>
+                                </div>
+                                <div class="col-6 py-1">
+                                    <p class="card-text text-muted mb-0">Total Pengeluaran</p>
+                                    <h3 class="fw-bolder mb-0 text-danger">@currencyRupiah($totalDebit)</h3>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -66,7 +76,8 @@
                         <div class="card-body">
                             <p class="card-text">
                                 <x-icon-feather icon="info" class="me-1" />
-                                Berikut adalah daftar transaksi yang telah dilakukan
+                                Berikut adalah daftar transaksi yang telah dilakukan periode {{ $startDate }} s/d
+                                {{ $endDate }}
                             </p>
                             <div class="table-responsive">
                                 <table class="table table-striped" id="tableTrx">

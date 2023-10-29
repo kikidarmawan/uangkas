@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helpers\Currency;
 use App\Repositories\Dompet\DompetRepository;
 use App\Repositories\DompetRiwayat\DompetRiwayatRepository;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -18,9 +19,19 @@ class DompetController extends Controller
     {
         $user = auth()->user();
         $dompet = $user->dompet;
+        $startDate = isset($request->startDate) ? $request->startDate : Carbon::now()->startOfMonth()->format('Y-m-d');
+        $endDate = isset($request->endDate) ? $request->endDate : date('Y-m-d');
+        $mutations = $this->dompetRiwayatRepository->getDompetRiwayatByDompetIdAndFilterByDate($dompet->id, $startDate, $endDate);
+        // group by month
+        // $mutations = collect($mutations)->groupBy(function ($item) {
+        //     return Carbon::parse($item['created_at'])->format('m');
+        // })->toArray();
+        // return $mutations;
+        $totalDebit = collect($mutations)->where('jns_trx', 'debit')->sum('debit');
+        $totalKredit = collect($mutations)->where('jns_trx', 'kredit')->sum('kredit');
         if ($request->ajax()) {
-            $query = $this->dompetRiwayatRepository->getDompetRiwayatByDompetId($dompet->id);
-            return DataTables::of($query)
+            // $query = $this->dompetRiwayatRepository->getDompetRiwayatByDompetId($dompet->id);
+            return DataTables::of($mutations)
                 ->addIndexColumn()
                 ->addColumn('nominal', function ($row) {
                     if ($row['jns_trx'] == 'debit') {
@@ -39,7 +50,11 @@ class DompetController extends Controller
                 ->toJson();
         }
         return view('pages.dompet.index', [
-            'dompet' => $dompet
+            'dompet' => $dompet,
+            'totalDebit' => $totalDebit,
+            'totalKredit' => $totalKredit,
+            'startDate' => $startDate,
+            'endDate' => $endDate
         ]);
     }
 }
