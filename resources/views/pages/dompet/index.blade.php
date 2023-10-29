@@ -13,8 +13,8 @@
 
         table {
             /* table-layout: fixed;
-                                                                                                                    width: 100%;
-                                                                                                                    white-space: nowrap; */
+                                                                                                                            width: 100%;
+                                                                                                                            white-space: nowrap; */
         }
     </style>
 @endpush
@@ -73,12 +73,8 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            {{-- <th>Jenis</th> --}}
                                             <th>Ref ID</th>
-                                            {{-- <th>Debit</th>
-                                            <th>Kredit</th> --}}
                                             <th>Nominal</th>
-                                            <th>Saldo Akhir</th>
                                             <th>Keterangan</th>
                                             <th>Tanggal Trx</th>
                                             <th>Tanggal Input</th>
