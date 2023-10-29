@@ -106,7 +106,7 @@
                                     <h2 class="brand-text text-primary ms-1">{{ env('APP_NAME') }}</h2>
                                 </a>
 
-                                <h4 class="card-title mb-1">Selamat datang! 👋</h4>
+                                <h4 class="card-title mb-1">{{ 'Masuk' }}</h4>
                                 <p class="card-text mb-2">Harap login terlebih dahulu</p>
 
                                 <form class="auth-login-form mt-2" action="{{ route('login.action') }}" method="POST">
