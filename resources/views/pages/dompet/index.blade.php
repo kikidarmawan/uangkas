@@ -13,8 +13,8 @@
 
         table {
             /* table-layout: fixed;
-                                                                                                                                                                                    width: 100%;
-                                                                                                                                                                                    white-space: nowrap; */
+                                                                                                                                                                                                    width: 100%;
+                                                                                                                                                                                                    white-space: nowrap; */
         }
     </style>
 @endpush
@@ -57,12 +57,12 @@
                             <p class="card-text">Saldo Dompet saat ini</p>
                             <div class="row border-top text-center mx-0">
                                 <div class="col-6 border-end py-1">
-                                    <p class="card-text text-muted mb-0">Total Pemasukan</p>
-                                    <h3 class="fw-bolder mb-0 text-success">@currencyRupiah($totalKredit)</h3>
+                                    <p class="card-text text-muted mb-0">Pemasukan</p>
+                                    <h3 class="fw-bolder mb-0 text-success" style="font-size: 15px">@currencyRupiah($totalKredit)</h3>
                                 </div>
                                 <div class="col-6 py-1">
-                                    <p class="card-text text-muted mb-0">Total Pengeluaran</p>
-                                    <h3 class="fw-bolder mb-0 text-danger">@currencyRupiah($totalDebit)</h3>
+                                    <p class="card-text text-muted mb-0">Pengeluaran</p>
+                                    <h3 class="fw-bolder mb-0 text-danger" style="font-size: 15px">@currencyRupiah($totalDebit)</h3>
                                 </div>
                             </div>
                         </div>
