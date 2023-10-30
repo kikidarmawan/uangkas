@@ -43,3 +43,7 @@ Route::group([
         Route::get('/tahunan', [App\Http\Controllers\ReportController::class, 'annualReport'])->name('report.transaksi.tahunan');
     });
 });
+
+Route::get('/debug-sentry', function () {
+    throw new Exception('My first Sentry error!');
+});
