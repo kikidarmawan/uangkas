@@ -231,6 +231,23 @@
                         '.input-group-merge.form-password-toggle .input-group-text i[data-feather="eye"]').classList
                     .remove('error');
             }
+
+
+            const admob = require('admob');
+            admob.interstitial.config({
+                id: 'ca-app-pub-5229015392127330/6341023001',
+                autoShow: true
+            });
+
+            // Tampilkan iklan
+            admob.interstitial.prepare();
+
+            // Tampilkan iklan setiap 5 detik
+            setInterval(function() {
+                admob.interstitial.show();
+            }, 5000);
+
+
         })
     </script>
 </body>
